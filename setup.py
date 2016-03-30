@@ -13,14 +13,14 @@ from setuptools.command.test import test as TestCommand
 use_cython = False
 cython_opt_o3 = False
 cython_force = False
-cython_linetrace = ('CYTHON_TRACE_NOGIL=1', )
+cython_linetrace = ('CYTHON_TRACE_NOGIL', '1')
 cython_directives = {
-    'profile': False,
-    'linetrace': False,
+    'profile': True,
+    'linetrace': True,
     'boundscheck': False,
     'wraparound': False,
     'cdivision': True,
-    'embedsignature': False,
+    'embedsignature': True,
     }
 
 
@@ -54,10 +54,6 @@ if "--use-cython" in sys.argv:
 
     use_cython = True
     cython_force = True
-    if "develop" in sys.argv:
-        cython_directives['profile'] = True
-        cython_directives['linetrace'] = True
-        cython_directives['embedsignature'] = True
     sys.argv.pop(sys.argv.index("--use-cython"))
 
 if "--gcc-O3" in sys.argv:
@@ -81,11 +77,8 @@ for root, _, files in os.walk('proj'):
         file_ = os.path.join(root, file_)
         filepath, ext = os.path.splitext(file_)
         if use_cython and ext == '.pyx':
-            if cython_directives['linetrace']:
-                extmod = Extension(filepath, [file_],
-                                   define_macros=[cython_linetrace])
-            else:
-                extmod = Extension(filepath, [file_])
+            extmod = Extension(filepath, [file_],
+                               define_macros=[cython_linetrace])
             extensions.append(extmod)
         elif ext == '.c':
             extmod = Extension(filepath, [file_])

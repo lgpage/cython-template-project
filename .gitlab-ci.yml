@@ -13,17 +13,18 @@ stages:
 cache:
     pip: true
     apt: true
+    untracked: true
 
 build:c:
     stage: build
     script:
-        - python setup.py build_ext develop
+        - python setup.py build_ext --inplace
 
 build:cython:
     stage: build
     script:
         - pip install cython --install-option=--no-cython-compile
-        - python setup.py build_ext develop --use-cython
+        - python setup.py build_ext --inplace --use-cython
 
 test:tox:
     stage: test
@@ -36,7 +37,6 @@ pages:
     stage: deploy
     script:
         - pip install sphinx
-        - python setup.py build_ext develop --use-cython
         - cd docs
         - make html
         - cd ../
