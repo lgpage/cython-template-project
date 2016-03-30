@@ -5,11 +5,9 @@
 import os
 import sys
 import glob
-import cython
 
+from distutils.command.build_ext import build_ext
 from setuptools import setup, Extension
-from Cython.Distutils import build_ext
-from Cython.Build import cythonize
 
 use_cython = False
 cython_opt_o3 = False
@@ -26,6 +24,10 @@ cython_directives = {
 
 
 if "--use-cython" in sys.argv:
+    import cython
+    from Cython.Distutils import build_ext
+    from Cython.Build import cythonize
+
     use_cython = True
     cython_force = True
     if "develop" in sys.argv:
