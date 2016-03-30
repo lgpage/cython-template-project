@@ -6,6 +6,8 @@
 ###############
 build/
 dist/
+*.tox
+*.cache
 *.egg-info
 
 # Compiled source #

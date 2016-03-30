@@ -8,6 +8,7 @@ import glob
 
 from distutils.command.build_ext import build_ext
 from setuptools import setup, Extension
+from setuptools.command.test import test as TestCommand
 
 use_cython = False
 cython_opt_o3 = False
@@ -21,6 +22,29 @@ cython_directives = {
     'cdivision': True,
     'embedsignature': False,
     }
+
+
+class Tox(TestCommand):
+    user_options = [('tox-args=', 'a', "Arguments to pass to tox")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.tox_args = None
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        #import here, cause outside the eggs aren't loaded
+        import tox
+        import shlex
+        args = self.tox_args
+        if args:
+            args = shlex.split(self.tox_args)
+        errno = tox.cmdline(args=args)
+        sys.exit(errno)
 
 
 if "--use-cython" in sys.argv:
@@ -40,10 +64,11 @@ if "--gcc-O3" in sys.argv:
     cython_opt_o3 = True
     sys.argv.pop(sys.argv.index("--gcc-O3"))
 
-
-with open('requirements.txt', 'r') as fobj:
-    dependencies = fobj.read()
-dependencies = dependencies.splitlines()
+dependencies = []
+if os.path.exists('requirements.txt'):
+    with open('requirements.txt', 'r') as fobj:
+        dependencies = fobj.read()
+    dependencies = dependencies.splitlines()
 
 extensions = []
 packages = []
@@ -86,6 +111,9 @@ setup(
     packages=packages,
     install_requires=dependencies,
     ext_modules=extensions,
-    cmdclass={"build_ext": build_ext},
+    cmdclass={
+        "build_ext": build_ext,
+        "test": Tox,
+        },
     scripts=scripts,
     )
