@@ -1,13 +1,42 @@
 before_script:
     - apt-get update -qy
-    - apt-get install -qy python-dev python-pip
+    - apt-get install -qy python-pip
     - pip install -r requirements.txt
 
-nocython:
+stages:
+    - build
+    - test
+    - deploy
+
+build:c:
+    stage: build
     script:
         - python setup.py develop
 
-withcython:
+build:cython:
+    stage: build
     script:
-        - pip install cython
+        - pip install cython --install-option=--no-cython-compile
         - python setup.py develop --use-cython
+
+test:tox:
+    stage: test
+    script:
+        - pip install tox
+        - pip install pytest
+        - tox
+
+pages:
+    stage: deploy
+    script:
+        - pip install sphinx
+        - cd docs
+        - make html
+        - cd ../
+        - mkdir public
+        - mv -r docs/build/html/* public/
+    artifacts:
+        paths:
+            - public
+    only:
+        - master
