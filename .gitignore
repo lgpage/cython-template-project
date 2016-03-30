@@ -1,0 +1,36 @@
+# IDE #
+#######
+~*
+
+# Directories #
+###############
+build/
+dist/
+*.egg-info
+
+# Compiled source #
+###################
+*.o
+*.so
+*.pyc
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.egg
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
