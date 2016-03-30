@@ -9,6 +9,10 @@ stages:
     - test
     - deploy
 
+cache:
+    pip: true
+    apt: true
+
 build:c:
     stage: build
     script:
