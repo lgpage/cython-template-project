@@ -1,16 +1,16 @@
 # cython-template-project
 
 ![Build Status](https://gitlab.com/logan/cython-template-project/badges/master/build.svg)
+![Build Status](https://travis-ci.org/lgpage/cython-template-project.svg?branch=master)
 
 A small Cython template project with
-[Gitlab-CI](https://gitlab.com/help/ci/README.md),
-[py.test](http://pytest.org/latest/), and
-[sphinx](http://www.sphinx-doc.org/en/stable/)
-integration.
+[Gitlab-CI](https://gitlab.com/help/ci/README.md) or [Travis
+CI](https://travis-ci.org/), [py.test](http://pytest.org/latest/), and
+[sphinx](http://www.sphinx-doc.org/en/stable/) integration.
 
-[Project pages](https://logan.gitlab.io/cython-template-project/)
-with sphinx autodoced API documentation are built and served from the
-Gitlab-CI service.
+[Project pages](https://logan.gitlab.io/cython-template-project/), for
+[Gitlab](https://gitlab.com/), with sphinx autodoc'ed API documentation are
+built and served from the Gitlab-CI service.
 
 # Building
 
@@ -42,7 +42,7 @@ The continous integration can also be done using [Travis
 CI](https://travis-ci.org/) and the equivalent
 [.travis.yml](https://docs.travis-ci.com/user/getting-started/) file.
 
-The following is a summary of what works and what does not with Gitlab-CI:
+The following is a summary of what works and what does not with CI:
 
 - build: Yes (with and without cython)
 - test:
@@ -55,6 +55,11 @@ The following is a summary of what works and what does not with Gitlab-CI:
     - sphinx docs: Yes
     - sphinx autodoc'ed API: Yes
     - serve Gitlab pages: Yes
+    - serve Github pages: No (Was too lazy to try)
+
+Note: Example of serving Github pages discussed
+[here](https://github.com/steveklabnik/automatically_update_github_pages_with_travis_example)
+
 
 # Editing the "proj" name
 
