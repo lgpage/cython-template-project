@@ -20,7 +20,8 @@ build:c:
     script:
         - python setup.py build_ext --inplace
     artifacts:
-        - *.so
+        paths:
+            - proj/**/*.so
 
 build:cython:
     stage: build
