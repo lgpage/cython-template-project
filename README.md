@@ -1,6 +1,6 @@
 # cython-template-project
 
-[![Build Status](https://gitlab.com/logan/cython-template-project/badges/master/build.svg)
+![Build Status](https://gitlab.com/logan/cython-template-project/badges/master/build.svg)
 
 A small Cython template project with
 [Gitlab-CI](https://gitlab.com/help/ci/README.md),
