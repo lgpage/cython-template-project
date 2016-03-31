@@ -36,6 +36,7 @@ test:tox:
     script:
         - pip install tox
         - pip install pytest
+        - python setup.py build_ext --inplace
         - tox
 
 pages:
