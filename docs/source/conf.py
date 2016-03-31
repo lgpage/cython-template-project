@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# PyCFD documentation build configuration file, created by
+# proj documentation build configuration file, created by
 # sphinx-quickstart on Mon Feb 29 21:33:27 2016.
 #
 # This file is execfile()d with the current directory set to its
