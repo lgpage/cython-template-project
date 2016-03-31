@@ -19,6 +19,8 @@ build:c:
     stage: build
     script:
         - python setup.py build_ext --inplace
+    artifacts:
+        - *.so
 
 build:cython:
     stage: build
@@ -28,6 +30,8 @@ build:cython:
 
 test:tox:
     stage: test
+    dependencies:
+        - build:c
     script:
         - pip install tox
         - pip install pytest
@@ -35,9 +39,10 @@ test:tox:
 
 pages:
     stage: deploy
+    dependencies:
+        - build:c
     script:
         - pip install sphinx
-        - python setup.py build_ext --inplace
         - cd docs
         - make html
         - cd ../
