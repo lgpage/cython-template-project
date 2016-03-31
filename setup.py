@@ -13,7 +13,7 @@ from setuptools.command.test import test as TestCommand
 use_cython = False
 cython_opt_o3 = False
 cython_force = False
-cython_linetrace = ('CYTHON_TRACE_NOGIL', '1')
+cython_macros = [('CYTHON_TRACE', '1'), ('CYTHON_TRACE_NOGIL', '1')]
 cython_directives = {
     'profile': True,
     'linetrace': True,
@@ -78,7 +78,7 @@ for root, _, files in os.walk('proj'):
         filepath, ext = os.path.splitext(file_)
         if use_cython and ext == '.pyx':
             extmod = Extension(filepath, [file_],
-                               define_macros=[cython_linetrace])
+                               define_macros=cython_macros)
             extensions.append(extmod)
         elif ext == '.c':
             extmod = Extension(filepath, [file_])
@@ -109,4 +109,9 @@ setup(
         "test": Tox,
         },
     scripts=scripts,
+    entry_points={
+        'console_scripts': [
+            'coveralls = coveralls.cli:main',
+            ],
+        },
     )

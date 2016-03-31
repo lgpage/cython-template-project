@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 # filename: test_docs.py
+# !!! THIS FILE WAS AUTOMATICALLY GENERATED... DO NOT EDIT !!!
 
 import doctest
 

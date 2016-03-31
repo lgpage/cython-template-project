@@ -1,0 +1,7 @@
+[run]
+plugins = Cython.Coverage
+
+[report]
+omit =
+    */python?.?/*
+    *__init__*

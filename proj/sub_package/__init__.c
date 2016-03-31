@@ -5,6 +5,10 @@
     "distutils": {
         "define_macros": [
             [
+                "CYTHON_TRACE", 
+                "1"
+            ], 
+            [
                 "CYTHON_TRACE_NOGIL", 
                 "1"
             ]

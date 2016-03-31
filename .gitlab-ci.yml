@@ -30,7 +30,6 @@ test:tox:
     stage: test
     script:
         - pip install tox
-        - pip install pytest
         - python setup.py build_ext --inplace
         - tox
 

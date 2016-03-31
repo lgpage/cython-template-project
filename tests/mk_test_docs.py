@@ -8,6 +8,7 @@ FILE_HEADER = """\
 #!/usr/bin/env python
 # encoding: utf-8
 # filename: test_docs.py
+# !!! THIS FILE WAS AUTOMATICALLY GENERATED... DO NOT EDIT !!!
 
 import doctest
 
@@ -28,7 +29,7 @@ def main():
                 path, filename = os.path.split(filepath)
                 extensions.append( (path.replace('/', '.'), filename) )
 
-    file_ = os.path.join(os.path.abspath('tests'), 'test_docs.stub')
+    file_ = os.path.join(os.path.abspath('tests'), 'test_docs.txt')
     with open(file_, 'r') as fobj:
         stub = fobj.read()
 
