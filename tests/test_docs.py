@@ -6,7 +6,7 @@
 import doctest
 
 
-def test_some_module():
+def test_docs_some_module():
     from proj.sub_package import some_module
     failures, tests = doctest.testmod(some_module, verbose=True)
     assert failures == 0

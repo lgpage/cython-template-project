@@ -1,4 +1,4 @@
-def test_{module_name}():
+def test_docs_{module_name}():
     from {import_path} import {module_name}
     failures, tests = doctest.testmod({module_name}, verbose=True)
     assert failures == 0

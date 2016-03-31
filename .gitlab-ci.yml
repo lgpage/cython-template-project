@@ -39,6 +39,7 @@ pages:
         - pip install sphinx
         - python setup.py build_ext --inplace
         - cd docs
+        - ./apidoc.sh
         - make html
         - cd ../
         - mkdir public
