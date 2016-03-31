@@ -45,6 +45,7 @@ pages:
         - build:c
     script:
         - pip install sphinx
+        - python setup.py build_ext --inplace
         - cd docs
         - make html
         - cd ../
