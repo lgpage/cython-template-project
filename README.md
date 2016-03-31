@@ -39,10 +39,10 @@ Continous integration is done using
 [.gitlab-ci.yml](https://gitlab.com/help/ci/yaml/README.md) file.
 
 The continous integration can also be done using [Travis
-CI](https://travis-ci.org/) by supplying an equivalent
+CI](https://travis-ci.org/) and the equivalent
 [.travis.yml](https://docs.travis-ci.com/user/getting-started/) file.
 
-The following is a summary of what works and what does not:
+The following is a summary of what works and what does not with Gitlab-CI:
 
 - build: Yes (with and without cython)
 - test:
