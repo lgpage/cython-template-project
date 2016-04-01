@@ -46,8 +46,3 @@ cdef class SomeClass:
             14.142135623730951
         """
         return sqrt(sqr(self.a) + sqr(self.b))
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

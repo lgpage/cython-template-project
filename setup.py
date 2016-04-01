@@ -72,22 +72,28 @@ excude_dirs = []
 for root, _, files in os.walk('proj'):
     if os.path.basename(root) in excude_dirs:
         continue
+
     packages.append(root)
     for file_ in files:
         file_ = os.path.join(root, file_)
         filepath, ext = os.path.splitext(file_)
+        pyx_source_file = None
         if use_cython and ext == '.pyx':
-            extmod = Extension(filepath, [file_],
-                               define_macros=cython_macros)
-            extensions.append(extmod)
+            pyx_source_file = file_
         elif ext == '.c':
-            extmod = Extension(filepath, [file_])
+            pyx_source_file = file_
+
+        if pyx_source_file is not None:
+            extmod = Extension(filepath, sources=[file_],
+                               define_macros=cython_macros)
             extensions.append(extmod)
 
 if use_cython:
     msg = 'Using cython version: {:s} ({:s})'
     print msg.format(cython.__version__, cython.__file__)
-    extensions = cythonize(extensions, force=cython_force)
+    extensions = cythonize(extensions,
+                           compiler_directives=cython_directives,
+                           force=cython_force)
 
 if cython_opt_o3:
     for x in extensions:
