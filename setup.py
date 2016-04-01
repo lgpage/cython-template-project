@@ -104,14 +104,14 @@ setup(
     packages=packages,
     install_requires=dependencies,
     ext_modules=extensions,
-    cmdclass={
-        "build_ext": build_ext,
-        "test": Tox,
-        },
     scripts=scripts,
     entry_points={
         'console_scripts': [
             'coveralls = coveralls.cli:main',
             ],
+        },
+    cmdclass={
+        "build_ext": build_ext,
+        "test": Tox,
         },
     )
