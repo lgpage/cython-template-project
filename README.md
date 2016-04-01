@@ -1,7 +1,7 @@
 # cython-template-project
 
-![Build Status](https://gitlab.com/logan/cython-template-project/badges/master/build.svg)
-![Build Status](https://travis-ci.org/lgpage/cython-template-project.svg?branch=master)
+[![Build Status](https://gitlab.com/logan/cython-template-project/badges/pytest_doctest/build.svg)](https://gitlab.com/logan/cython-template-project/badges/pytest_doctest/build.svg)
+[![Build Status](https://travis-ci.org/lgpage/cython-template-project.svg?branch=pytest_doctest)](https://travis-ci.org/lgpage/cython-template-project)
 
 A small Cython template project with
 [Gitlab-CI](https://gitlab.com/help/ci/README.md) or [Travis
